@@ -25,9 +25,9 @@ class phantomjs {
   include phantomjs::deps
   
   $TEMP = '/tmp'
-  $NAME = 'phantomjs-1.9.0-linux-x86_64'
+  $NAME = 'phantomjs-1.9.7-linux-i686'
   $PACKAGE = "$NAME.tar.bz2"
-  $URL64BIT = "https://phantomjs.googlecode.com/files/$PACKAGE"
+  $URL64BIT = "https://bitbucket.org/ariya/phantomjs/downloads/$PACKAGE"
   $TEMPPACKAGE = "$TEMP/$PACKAGE"
   $OPT = '/opt'
   $INSTALLDIR = "$OPT/$NAME"
@@ -37,7 +37,8 @@ class phantomjs {
       cwd       => "$TEMP",
       command   => "/usr/bin/wget $URL64BIT --output-document=$PACKAGE",
       logoutput => on_failure,
-      creates   => "$TEMPPACKAGE";
+      creates   => "$TEMPPACKAGE",
+      require   => Package['wget'];
 
     'install_phantomjs':
       cwd       => "$OPT",
@@ -45,6 +46,23 @@ class phantomjs {
       logoutput => on_failure,
       creates   => "$INSTALLDIR",
       require   => [Exec['get_phantomjs'], Class['phantomjs::deps']];
+  }
+
+  file {
+    "/usr/local/share/phantomjs" :
+      ensure => 'link',
+      target => "$INSTALLDIR/bin/phantomjs",
+      require => Exec['install_phantomjs'];
+
+    "/usr/local/bin/phantomjs" :
+      ensure => 'link',
+      target => "$INSTALLDIR/bin/phantomjs",
+      require => Exec['install_phantomjs'];
+
+     "/usr/bin/phantomjs" :
+        ensure => 'link',
+        target => "$INSTALLDIR/bin/phantomjs",
+        require => Exec['install_phantomjs'];
   }
 
 }
