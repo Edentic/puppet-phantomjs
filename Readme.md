@@ -1,3 +1,14 @@
-# phantomjs #
+#32-bit PhantomJS Puppet Module
+This puppet module setup PhantomJS on a 32-bit Ubuntu box
 
-This is the phantomjs puppet module. It provides PhantomJS Support for 64-bit Ubuntu Precise (12.04 LTS).
+##Requirements
+ None at all :-)
+
+##Installation
+Copy the module to the Puppet module folder
+
+##Usage
+Use `include phantomjs` in your manifest file, to run the installation 
+
+##Thanks to [Eric Internicola](https://github.com/intere) 
+for creating the [module this fork](https://github.com/intere/puppet-phantomjs) is based upon.
