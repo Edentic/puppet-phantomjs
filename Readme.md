@@ -1,5 +1,5 @@
 #32-bit PhantomJS Puppet Module
-This puppet module setup PhantomJS on a 32-bit Ubuntu box
+This puppet module manages the setup of PhantomJS on a 32-bit Ubuntu box.
 
 ##Requirements
  None at all :-)
