@@ -5,10 +5,10 @@ This puppet module manages the setup of PhantomJS on a 32-bit Ubuntu box.
  None at all :-)
 
 ##Installation
-Copy the module to the Puppet module folder
+Copy the module to the Puppet module folder.
 
 ##Usage
-Use `include phantomjs` in your manifest file, to run the installation 
+Use `include phantomjs` in your manifest file, to run the installation.
 
 ##Thanks to [Eric Internicola](https://github.com/intere) 
 for creating the [module this fork](https://github.com/intere/puppet-phantomjs) is based upon.
